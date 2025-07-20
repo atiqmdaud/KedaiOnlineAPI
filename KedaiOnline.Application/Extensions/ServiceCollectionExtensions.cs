@@ -9,5 +9,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped<IKedaiOnlineService, KedaiOnlineService>();
 
+        services.AddAutoMapper(typeof(ServiceCollectionExtensions).Assembly);
+
     }
 }

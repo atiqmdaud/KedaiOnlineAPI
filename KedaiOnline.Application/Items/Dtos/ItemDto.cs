@@ -9,15 +9,15 @@ public class ItemDto
     public string Description { get; set; } = default!;
     public decimal Price { get; set; }
 
-    public static ItemDto FromEntity(Item item)
-    {
+    //public static ItemDto FromEntity(Item item)
+    //{
 
-        return new ItemDto
-        {
-            Id = item.Id,
-            Name = item.Name,
-            Description = item.Description,
-            Price = item.Price
-        };
-    }
+    //    return new ItemDto
+    //    {
+    //        Id = item.Id,
+    //        Name = item.Name,
+    //        Description = item.Description,
+    //        Price = item.Price
+    //    };
+    //}
 }
