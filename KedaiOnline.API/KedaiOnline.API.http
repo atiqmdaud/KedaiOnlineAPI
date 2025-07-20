@@ -1,0 +1,9 @@
+@KedaiOnline.API_HostAddress = https://localhost:7039
+
+GET {{KedaiOnline.API_HostAddress}}/api/kedaionline
+
+###
+
+GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/2
+
+###
