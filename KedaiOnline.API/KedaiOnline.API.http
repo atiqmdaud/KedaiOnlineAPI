@@ -12,11 +12,11 @@ POST {{KedaiOnline.API_HostAddress}}/api/kedaionline
 Content-Type: application/json
 
 {
-    "Nama" : "Kedai 4",
-    "Description" : "Kedai 4 Description",
-    "Category" : "Nasi kerabu",
+    "Nama" : "Kedai 6",
+    "Description" : "Kedai 6 Description",
+    "Category" : "Nasi Kerabu",
     "HasDelivery" : "ya",
-    "ContactEmail" : "kedai4@test.com",
+    "ContactEmail" : "kedai5@test.com",
     "ContactNumber" : "0123456789",
     "City" : "Ayer Keroh",
     "Street" : "Jalan Ayer Keroh",
