@@ -39,8 +39,12 @@ public class KedaiOnlineController(IKedaiOnlineService kedaiOnlineService):Contr
     //    return CreatedAtAction(nameof(GetById), new { id = kedai.Id }, kedai);
     //}
 
-    public async Task<IActionResult> CreateKedai([FromBody]CreateKedaiDto createKedaiDto )
+    public async Task<IActionResult> CreateKedai(CreateKedaiDto createKedaiDto )
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
         int id = await kedaiOnlineService.Create(createKedaiDto);
         return CreatedAtAction(nameof(GetById), new { id }, null);
 
