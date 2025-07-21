@@ -7,6 +7,15 @@ public class KedaiOnlineProfile : Profile
 {
     public KedaiOnlineProfile()
     {
+        CreateMap<CreateKedaiDto, Kedai>()
+            .ForMember(dest => dest.Address, opt => opt.MapFrom(src => new Address
+            {
+                City = src.City,
+                Street = src.Street,
+                PostalCode = src.PostalCode
+            }));
+            //.ForMember(dest => dest.Items, opt => opt.Ignore()); // Assuming Items will be set separately
+
         CreateMap<Kedai, KedaiDto>()
             .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Address == null ? null : src.Address.City))
             .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Address == null ? null : src.Address.Street))

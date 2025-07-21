@@ -8,6 +8,14 @@ namespace KedaiOnline.Application.KedaiOnline;
 
 internal class KedaiOnlineService(IKedaiOnlineRepository kedaiOnlineRepository, ILogger<KedaiOnlineService> logger, IMapper mapper) : IKedaiOnlineService
 {
+    public async Task<int> Create(CreateKedaiDto dto)
+    {
+        logger.LogInformation("Creating a new Kedai Online");
+        var kedai = mapper.Map<Kedai>(dto);
+        int id = await kedaiOnlineRepository.CreateAsync(kedai);
+        return id;
+    }
+
     public async Task<IEnumerable<KedaiDto>> GetAllKedaiOnline()
     {
         logger.LogInformation("Fetching all Kedai Online");

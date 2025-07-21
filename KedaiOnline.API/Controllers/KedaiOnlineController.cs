@@ -1,4 +1,5 @@
 ﻿using KedaiOnline.Application.KedaiOnline;
+using KedaiOnline.Application.KedaiOnline.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KedaiOnline.API.Controllers;
@@ -25,6 +26,24 @@ public class KedaiOnlineController(IKedaiOnlineService kedaiOnlineService):Contr
     {
         var kedai = await kedaiOnlineService.GetKedaiOnlineById(id);
         return kedai is not null ? Ok(kedai) : NotFound();
+    }
+
+    [HttpPost]
+    //public async Task<IActionResult> Create([FromBody] CreateKedaiOnlineCommand command)
+    //{
+    //    if (!ModelState.IsValid)
+    //    {
+    //        return BadRequest(ModelState);
+    //    }
+    //    var kedai = await kedaiOnlineService.CreateKedaiOnline(command);
+    //    return CreatedAtAction(nameof(GetById), new { id = kedai.Id }, kedai);
+    //}
+
+    public async Task<IActionResult> CreateKedai([FromBody]CreateKedaiDto createKedaiDto )
+    {
+        int id = await kedaiOnlineService.Create(createKedaiDto);
+        return CreatedAtAction(nameof(GetById), new { id }, null);
+
     }
 
 }

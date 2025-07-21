@@ -7,3 +7,21 @@ GET {{KedaiOnline.API_HostAddress}}/api/kedaionline
 GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/2
 
 ###
+
+POST {{KedaiOnline.API_HostAddress}}/api/kedaionline
+Content-Type: application/json
+
+{
+    "Nama" : "Kedai 3",
+    "Description" : "Kedai 3 Description",
+    "Category" : "Minuman",
+    "HasDelivery" : "ya",
+    "ContactEmail" : "kedai3@test.com",
+    "ContactNumber" : "0123456789",
+    "City" : "Ayer Keroh",
+    "Street" : "Jalan Ayer Keroh",
+    "PostalCode" : "75450"
+}
+
+###
+GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/3

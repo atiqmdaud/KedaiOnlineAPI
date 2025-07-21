@@ -7,6 +7,13 @@ namespace KedaiOnline.Infrastructure.Repositories;
 
 internal class KedaiOnlineRepository(KedaiOnlineDbContext dbContext) : IKedaiOnlineRepository
 {
+    public async Task<int> CreateAsync(Kedai entity)
+    {
+        dbContext.KedaiOnline.Add(entity);
+        await dbContext.SaveChangesAsync();
+        return entity.Id;
+    }
+
     public async Task<IEnumerable<Kedai>> GetAllAsync()
     {
         var kedaiOnline = await dbContext.KedaiOnline.ToListAsync();
