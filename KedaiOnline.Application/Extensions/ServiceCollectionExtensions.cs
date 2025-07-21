@@ -11,7 +11,7 @@ public static class ServiceCollectionExtensions
     {
         var applicationAssembly = typeof(ServiceCollectionExtensions).Assembly;
 
-        services.AddScoped<IKedaiOnlineService, KedaiOnlineService>();
+        services.AddMediatR(cfg=>cfg.RegisterServicesFromAssembly(applicationAssembly));
 
         services.AddAutoMapper(applicationAssembly);
 

@@ -9,11 +9,16 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
+    <PackageReference Include="MediatR" Version="13.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\KedaiOnline.Domain\KedaiOnline.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="KedaiOnline\Validators\" />
   </ItemGroup>
 
 </Project>

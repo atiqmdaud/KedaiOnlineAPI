@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using KedaiOnline.Application.KedaiOnline.Commands.CreateKedai;
 using KedaiOnline.Domain.Entities;
 
 namespace KedaiOnline.Application.KedaiOnline.Dtos;
@@ -7,7 +8,7 @@ public class KedaiOnlineProfile : Profile
 {
     public KedaiOnlineProfile()
     {
-        CreateMap<CreateKedaiDto, Kedai>()
+        CreateMap<CreateKedaiCommand, Kedai>()
             .ForMember(dest => dest.Address, opt => opt.MapFrom(src => new Address
             {
                 City = src.City,

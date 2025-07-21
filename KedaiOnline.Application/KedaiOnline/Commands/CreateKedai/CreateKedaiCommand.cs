@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MediatR;
 
-namespace KedaiOnline.Application.KedaiOnline.Dtos;
+namespace KedaiOnline.Application.KedaiOnline.Commands.CreateKedai;
 
-public class CreateKedaiDto
+public class CreateKedaiCommand : IRequest<int> //int represents the ID of the created Kedai
 {
     public string Nama { get; set; } = default!;
     public string Description { get; set; } = default!;

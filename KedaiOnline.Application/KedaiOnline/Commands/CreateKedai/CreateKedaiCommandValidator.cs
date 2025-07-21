@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
 using KedaiOnline.Application.KedaiOnline.Dtos;
 
-namespace KedaiOnline.Application.KedaiOnline.Validators;
+namespace KedaiOnline.Application.KedaiOnline.Commands.CreateKedai;
 
-public class CreateKedaiDtoValidator : AbstractValidator<CreateKedaiDto>
+public class CreateKedaiCommandValidator : AbstractValidator<CreateKedaiCommand>
 {
     private readonly List<string> validCategories = ["Makanan", "Runcit", "Minuman", "Nasi Kerabu"];
-public CreateKedaiDtoValidator()
+public CreateKedaiCommandValidator()
     {
         RuleFor(dto => dto.Nama)
             .Length(5, 100);
