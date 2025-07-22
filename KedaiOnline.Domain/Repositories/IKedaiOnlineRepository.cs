@@ -8,4 +8,5 @@ public interface IKedaiOnlineRepository
     Task<Kedai?> GetByIdAsync(int id);
     Task<int> CreateAsync(Kedai entity);
     Task DeleteAsync(Kedai entity);
+    Task SaveChangesAsync();
 }

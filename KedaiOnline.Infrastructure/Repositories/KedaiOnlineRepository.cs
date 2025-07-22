@@ -35,4 +35,8 @@ internal class KedaiOnlineRepository(KedaiOnlineDbContext dbContext) : IKedaiOnl
             .FirstOrDefaultAsync(k => k.Id == id);
         return kedai;
     }
+
+    public Task SaveChangesAsync() { 
+        return dbContext.SaveChangesAsync(); 
+    }
 }
