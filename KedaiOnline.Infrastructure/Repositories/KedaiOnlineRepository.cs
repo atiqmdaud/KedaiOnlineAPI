@@ -14,6 +14,13 @@ internal class KedaiOnlineRepository(KedaiOnlineDbContext dbContext) : IKedaiOnl
         return entity.Id;
     }
 
+    public Task DeleteAsync(Kedai entity)
+    {
+        dbContext.KedaiOnline.Remove(entity);
+        //dbContext.Remove(entity);
+        return dbContext.SaveChangesAsync();
+    }
+
     public async Task<IEnumerable<Kedai>> GetAllAsync()
     {
         var kedaiOnline = await dbContext.KedaiOnline.ToListAsync();

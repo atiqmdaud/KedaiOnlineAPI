@@ -4,7 +4,11 @@ GET {{KedaiOnline.API_HostAddress}}/api/kedaionline
 
 ###
 
-GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/10
+GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/8
+
+###
+
+DELETE {{KedaiOnline.API_HostAddress}}/api/kedaionline/8
 
 ###
 

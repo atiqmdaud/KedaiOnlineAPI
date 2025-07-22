@@ -1,5 +1,6 @@
 ﻿using KedaiOnline.Application.KedaiOnline;
 using KedaiOnline.Application.KedaiOnline.Commands.CreateKedai;
+using KedaiOnline.Application.KedaiOnline.Commands.DeleteKedai;
 using KedaiOnline.Application.KedaiOnline.Dtos;
 using KedaiOnline.Application.KedaiOnline.Queries.GetAllKedaiOnline;
 using KedaiOnline.Application.KedaiOnline.Queries.GetKedaiById;
@@ -52,6 +53,13 @@ public class KedaiOnlineController(IMediator mediator):ControllerBase
         int id = await mediator.Send(command);
         return CreatedAtAction(nameof(GetById), new { id }, null);
 
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteKedai([FromRoute] int id)
+    {
+        var isDeleted = await mediator.Send(new DeleteKedaiCommand(id));
+        return isDeleted ? NoContent() : NotFound();
     }
 
 }
