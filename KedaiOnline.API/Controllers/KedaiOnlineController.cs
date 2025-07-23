@@ -15,36 +15,22 @@ namespace KedaiOnline.API.Controllers;
 public class KedaiOnlineController(IMediator mediator):ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<KedaiDto>))]
+    public async Task<ActionResult<IEnumerable<KedaiDto>>> GetAll()
         {
         var kedaiOnline = await mediator.Send(new GetAllKedaiOnlineQuery());
         return Ok(kedaiOnline);
     }
 
-    //[HttpGet("{id}")]
-    //public async Task<IActionResult> GetById(int id)
-    //{
-
-    //}
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById([FromRoute]int id)
+    public async Task<ActionResult<KedaiDto?>> GetById([FromRoute]int id)
     {
         var kedai = await mediator.Send(new GetKedaiByIdQuery(id));
         return kedai is not null ? Ok(kedai) : NotFound();
     }
 
     [HttpPost]
-    //public async Task<IActionResult> Create([FromBody] CreateKedaiOnlineCommand command)
-    //{
-    //    if (!ModelState.IsValid)
-    //    {
-    //        return BadRequest(ModelState);
-    //    }
-    //    var kedai = await kedaiOnlineService.CreateKedaiOnline(command);
-    //    return CreatedAtAction(nameof(GetById), new { id = kedai.Id }, kedai);
-    //}
-
     public async Task<IActionResult> CreateKedai(CreateKedaiCommand command )
     {
         if (!ModelState.IsValid)
@@ -57,6 +43,8 @@ public class KedaiOnlineController(IMediator mediator):ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> DeleteKedai([FromRoute] int id)
     {
         var isDeleted = await mediator.Send(new DeleteKedaiCommand(id));
@@ -64,6 +52,8 @@ public class KedaiOnlineController(IMediator mediator):ControllerBase
     }
 
     [HttpPatch("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateKedai([FromRoute] int id, UpdateKedaiCommand command)
     {
         command.Id = id;

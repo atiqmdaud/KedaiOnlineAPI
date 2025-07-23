@@ -7,6 +7,8 @@ using KedaiOnline.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSwaggerGen();
+
 // Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
@@ -23,6 +25,13 @@ var seeder = scope.ServiceProvider.GetRequiredService<IKedaiSeeder>();
 await seeder.Seed();
 
 // Configure the HTTP request pipeline.
+
+if (app.Environment.IsDevelopment())
+{
+app.UseSwagger();
+app.UseSwaggerUI();
+}
+
 
 app.UseHttpsRedirection();
 
