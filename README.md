@@ -1,4 +1,4 @@
-\# 🛍️ Kedai Online API
+# 🛍️ Kedai Online API
 
 
 
@@ -6,7 +6,7 @@ Kedai Online API is a robust CRUD web API application built using \*\*.NET 9\*\*
 
 
 
-\## 🚧 Development Status
+## 🚧 Development Status
 
 
 
@@ -14,7 +14,7 @@ Kedai Online API is actively being developed. Certain modules may still be incom
 
 
 
-\## 🚀 Tech Stack \& Features
+## 🚀 Tech Stack \& Features
 
 
 
