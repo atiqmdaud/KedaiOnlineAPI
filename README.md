@@ -2,7 +2,7 @@
 
 
 
-Kedai Online API is a robust CRUD web API application built using \*\*.NET 9\*\* and grounded in \*\*Clean Architecture\*\* principles. Designed for scalability and maintainability, it streamlines backend development for an online storefront ("kedai online").
+Kedai Online API is a robust CRUD web API application built using **.NET 9** and grounded in **Clean Architecture** principles. Designed for scalability and maintainability, it streamlines backend development for an online storefront ("kedai online").
 
 
 
@@ -14,61 +14,61 @@ Kedai Online API is actively being developed. Certain modules may still be incom
 
 
 
-## 🚀 Tech Stack \& Features
+## 🚀 Tech Stack & Features
 
 
 
-\- \*\*ASP.NET Core Web API\*\* with controller support  
+- **ASP.NET Core Web API** with controller support  
 
-\- \*\*Entity Framework Core\*\* for seamless database interaction  
+- **Entity Framework Core** for seamless database interaction  
 
-\- \*\*AutoMapper\*\* for elegant model-to-DTO conversions  
+- **AutoMapper** for elegant model-to-DTO conversions  
 
-\- \*\*FluentValidation\*\* for clean and expressive input validation  
+- **FluentValidation** for clean and expressive input validation  
 
-\- \*\*CQRS with MediatR\*\* to separate command and query responsibilities  
+- **CQRS with MediatR** to separate command and query responsibilities  
 
-\- \*\*Swagger UI\*\* for interactive API exploration and testing  
+- **Swagger UI** for interactive API exploration and testing  
 
 
 
-\## 📦 Functionality
+## 📦 Functionality
 
 
 
 This API enables full lifecycle management of kedai online resources:
 
-\- ✅ Create new items and entries  
+- ✅ Create new items and entries  
 
-\- 🔍 Read and list available resources  
+- 🔍 Read and list available resources  
 
-\- ✏️ Update existing data  
+- ✏️ Update existing data  
 
-\- 🗑️ Delete records efficiently  
+- 🗑️ Delete records efficiently  
 
 
 
-\## 🧠 Architecture
+## 🧠 Architecture
 
 
 
 Organized into distinct layers for clear separation of concerns:
 
-\- \*\*Presentation Layer\*\* (Controllers)  
+- **Presentation Layer** (Controllers)  
 
-\- \*\*Application Layer\*\* (CQRS Handlers, Business Logic)  
+- **Application Layer** (CQRS Handlers, Business Logic)  
 
-\- \*\*Domain Layer\*\* (Entities, Interfaces)  
+- **Domain Layer** (Entities, Interfaces)  
 
-\- \*\*Infrastructure Layer\*\* (Database Contexts, External Services)  
-
-
-
-\## 📚 Documentation
+- **Infrastructure Layer** (Database Contexts, External Services)  
 
 
 
-Access full API documentation via \*\*Swagger UI\*\*, auto-generated and available on application launch for quick testing and reference.
+## 📚 Documentation
+
+
+
+Access full API documentation via **Swagger UI**, auto-generated and available on application launch for quick testing and reference.
 
 
 
