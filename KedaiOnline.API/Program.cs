@@ -7,6 +7,7 @@ using KedaiOnline.Application.Extensions;
 using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Compact;
+using KedaiOnline.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,8 @@ builder.Services.AddApplication();
 //builder.Configuration.GetConnectionString("KedaiOnlineDb");
 builder.Services.AddInfrastructure(builder.Configuration);
 
+builder.Services.AddScoped<ErrorHandlingMiddleware>();
+
 builder.Host.UseSerilog((context, configuration)=>
 configuration
     .ReadFrom.Configuration(context.Configuration)
@@ -33,6 +36,8 @@ var app = builder.Build();
 var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetRequiredService<IKedaiSeeder>();
 await seeder.Seed();
+
+app.UseMiddleware<ErrorHandlingMiddleware>(); //1st middleware
 
 app.UseSerilogRequestLogging();
 
