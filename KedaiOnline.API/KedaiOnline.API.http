@@ -16,10 +16,10 @@ POST {{KedaiOnline.API_HostAddress}}/api/kedaionline
 Content-Type: application/json
 
 {
-    "Nama" : "Kedai 12",
-    "Description" : "Kedai 12 Description",
+    "Nama" : "Kedai 13",
+    "Description" : "Kedai 13 Description",
     "Category" : "Nasi Kerabu",
-    "HasDelivery" : "ya",
+    "HasDelivery" : "tidak",
     "ContactEmail" : "kedai12@test.com",
     "ContactNumber" : "0123456789",
     "City" : "Ayer Keroh",
@@ -34,13 +34,13 @@ GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/3
 GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/10
 
 ###
-PATCH {{KedaiOnline.API_HostAddress}}/api/kedaionline/14
+PATCH {{KedaiOnline.API_HostAddress}}/api/kedaionline/16
 Content-Type: application/json
 
 {
-    "Nama" : "Kedai 12",
+    "Nama" : "Kedai 13",
     "Description" : "Kedai 12 Description",
-    "HasDelivery" : "yaa"
+    "HasDelivery" : "ya"
 }
 
 ###

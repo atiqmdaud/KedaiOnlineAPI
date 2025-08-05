@@ -8,3 +8,6 @@
 
 # Visual Studio cache
 .vs/
+
+logs/
+*.log
