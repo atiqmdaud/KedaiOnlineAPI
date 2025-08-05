@@ -20,7 +20,9 @@ public static class ServiceCollectionExtension
         // services.AddScoped<IExampleService, ExampleService>();
 
         var connectionString = configuration.GetConnectionString("KedaiOnlineDb");
-        services.AddDbContext<KedaiOnlineDbContext>(Options => Options.UseSqlServer(connectionString));
+        services.AddDbContext<KedaiOnlineDbContext>(Options => 
+        Options.UseSqlServer(connectionString)
+            .EnableSensitiveDataLogging());
 
         // Register the seeder
         services.AddScoped<IKedaiSeeder, KedaiSeeder>();//scope bucause it depends on DbContext

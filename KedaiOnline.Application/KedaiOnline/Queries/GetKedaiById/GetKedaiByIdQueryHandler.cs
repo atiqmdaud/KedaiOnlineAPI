@@ -11,7 +11,7 @@ public class GetKedaiByIdQueryHandler(ILogger<GetKedaiByIdQueryHandler> logger,
 {
     public async Task<KedaiDto?> Handle(GetKedaiByIdQuery request, CancellationToken cancellationToken)
     {
-        logger.LogInformation($"Fetching Kedai Online with ID: {request.Id}");
+        logger.LogInformation("Fetching Kedai Online {KedaiId}",request.Id);
         var kedai = await kedaiOnlineRepository.GetByIdAsync(request.Id);
         //var kedaiDto = kedai != null ? KedaiDto.FromEntity(kedai) : null;
         //var kedaiDto = KedaiDto.FromEntity(kedai);

@@ -9,7 +9,7 @@ public class DeleteKedaiCommandHandler(ILogger<DeleteKedaiCommandHandler> logger
 {
     public async Task<bool> Handle(DeleteKedaiCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Deleting Kedai with ID: {Id}", request.Id);
+        logger.LogInformation("Deleting Kedai with ID: {KedaiId}", request.Id);
         var kedai = await kedaiOnlineRepository.GetByIdAsync(request.Id);
         if (kedai == null)
         {

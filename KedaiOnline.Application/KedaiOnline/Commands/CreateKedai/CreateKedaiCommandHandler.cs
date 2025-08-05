@@ -11,7 +11,7 @@ public class CreateKedaiCommandHandler(ILogger<CreateKedaiCommandHandler> logger
 {
     public async Task<int> Handle(CreateKedaiCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Creating a new Kedai Online");
+        logger.LogInformation("Creating a new Kedai Online {@Kedai}", request);
         var kedai = mapper.Map<Kedai>(request);
         int id = await kedaiOnlineRepository.CreateAsync(kedai);
         return id;
