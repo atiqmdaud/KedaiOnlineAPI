@@ -1,4 +1,6 @@
 ﻿
+using KedaiOnline.Domain.Exceptions;
+
 namespace KedaiOnline.API.Middlewares
 {
     public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : IMiddleware
@@ -9,7 +11,17 @@ namespace KedaiOnline.API.Middlewares
             {
                 await next.Invoke(context);
 
-            } catch(Exception ex)
+            }
+
+            catch (NotFoundException notfound)
+            {
+                context.Response.StatusCode = 404;
+                await context.Response.WriteAsync(notfound.Message);
+
+                logger.LogWarning(notfound.Message);
+            }
+            
+            catch (Exception ex)
             {
                 logger.LogError(ex, ex.Message);
                 context.Response.StatusCode = 500; // Internal Server Error

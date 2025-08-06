@@ -3,7 +3,7 @@ using MediatR;
 
 namespace KedaiOnline.Application.KedaiOnline.Queries.GetKedaiById;
 
-public class GetKedaiByIdQuery(int id) : IRequest<KedaiDto?>
+public class GetKedaiByIdQuery(int id) : IRequest<KedaiDto>
 {
     public int Id { get; } = id;
 

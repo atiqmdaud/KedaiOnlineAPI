@@ -27,7 +27,7 @@ public class KedaiOnlineController(IMediator mediator):ControllerBase
     public async Task<ActionResult<KedaiDto?>> GetById([FromRoute]int id)
     {
         var kedai = await mediator.Send(new GetKedaiByIdQuery(id));
-        return kedai is not null ? Ok(kedai) : NotFound();
+        return Ok(kedai);
     }
 
     [HttpPost]
@@ -47,8 +47,8 @@ public class KedaiOnlineController(IMediator mediator):ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> DeleteKedai([FromRoute] int id)
     {
-        var isDeleted = await mediator.Send(new DeleteKedaiCommand(id));
-        return isDeleted ? NoContent() : NotFound();
+        await mediator.Send(new DeleteKedaiCommand(id));
+        return NoContent();
     }
 
     [HttpPatch("{id}")]
@@ -57,8 +57,8 @@ public class KedaiOnlineController(IMediator mediator):ControllerBase
     public async Task<IActionResult> UpdateKedai([FromRoute] int id, UpdateKedaiCommand command)
     {
         command.Id = id;
-        var isUpdated = await mediator.Send(command);
-        return isUpdated ? NoContent() : NotFound();
+        await mediator.Send(command);
+        return NoContent();
     }
 
 }

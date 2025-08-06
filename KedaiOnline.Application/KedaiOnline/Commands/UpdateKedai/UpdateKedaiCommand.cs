@@ -2,7 +2,7 @@
 
 namespace KedaiOnline.Application.KedaiOnline.Commands.UpdateKedai;
 
-public class UpdateKedaiCommand : IRequest<bool>
+public class UpdateKedaiCommand : IRequest
 {
     public int Id { get; set; }
     public string Nama { get; set; } = default!;
