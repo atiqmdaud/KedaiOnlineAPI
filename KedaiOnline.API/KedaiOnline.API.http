@@ -55,3 +55,7 @@ Content-Type: application/json
 }
 
 ###
+
+GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/1/items/1
+
+###
