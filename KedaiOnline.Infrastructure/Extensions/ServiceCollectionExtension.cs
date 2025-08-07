@@ -27,5 +27,6 @@ public static class ServiceCollectionExtension
         // Register the seeder
         services.AddScoped<IKedaiSeeder, KedaiSeeder>();//scope bucause it depends on DbContext
         services.AddScoped<IKedaiOnlineRepository, KedaiOnlineRepository>();
+        services.AddScoped<IItemsRepository, ItemsRepository>();
     }
 }

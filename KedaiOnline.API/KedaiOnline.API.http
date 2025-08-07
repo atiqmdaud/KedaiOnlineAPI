@@ -4,7 +4,7 @@ GET {{KedaiOnline.API_HostAddress}}/api/kedaionline
 
 ###
 
-GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/8
+GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/1
 
 ###
 
@@ -41,6 +41,17 @@ Content-Type: application/json
     "Nama" : "Kedai 13",
     "Description" : "Kedai 12 Description",
     "HasDelivery" : "ya"
+}
+
+###
+
+POST {{KedaiOnline.API_HostAddress}}/api/kedaionline/1/items
+Content-Type: application/json
+
+{
+    "Name" : "Item 161",
+    "Description" : "Item 161 Description",
+    "Price" : 10.00
 }
 
 ###
