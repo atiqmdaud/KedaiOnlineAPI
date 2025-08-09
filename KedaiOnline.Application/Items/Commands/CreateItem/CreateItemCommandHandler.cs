@@ -10,9 +10,9 @@ namespace KedaiOnline.Application.Items.Commands.CreateItem;
 public class CreateItemCommandHandler(ILogger<CreateItemCommandHandler> logger,
     IKedaiOnlineRepository kedaiOnlineRepository,
     IItemsRepository itemsRepository,
-    IMapper mapper) : IRequestHandler<CreateItemCommand>
+    IMapper mapper) : IRequestHandler<CreateItemCommand, int>
 {
-    public async Task Handle(CreateItemCommand request, CancellationToken cancellationToken)
+    public async Task<int> Handle(CreateItemCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Creating new item: {@ItemRequest}", request);
         var kedaiOnline = await kedaiOnlineRepository.GetByIdAsync(request.KedaiId);
@@ -23,6 +23,6 @@ public class CreateItemCommandHandler(ILogger<CreateItemCommandHandler> logger,
 
         var item = mapper.Map<Item>(request);
 
-        await itemsRepository.CreateAsync(item);
+        return await itemsRepository.CreateAsync(item);
     }
 }

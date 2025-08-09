@@ -56,10 +56,14 @@ Content-Type: application/json
 
 ###
 
-GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/1234/items/
+GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/1/items/
 
 ###
 
 DELETE {{KedaiOnline.API_HostAddress}}/api/kedaionline/1/items/
+
+###
+
+GET https://localhost:7039/api/kedaionline/1/items/27
 
 ###

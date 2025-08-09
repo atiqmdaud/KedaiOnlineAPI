@@ -16,8 +16,8 @@ public class ItemsController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> CreateItem([FromRoute] int kedaiId, CreateItemCommand command)
     {
         command.KedaiId = kedaiId;
-        await mediator.Send(command);
-        return Created();
+        var itemId = await mediator.Send(command);
+        return CreatedAtAction(nameof(GetItem), new { kedaiId, itemId}, null);
     }
 
     [HttpGet]

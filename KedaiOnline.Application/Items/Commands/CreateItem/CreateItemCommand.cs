@@ -2,7 +2,7 @@
 
 namespace KedaiOnline.Application.Items.Commands.CreateItem;
 
-public class CreateItemCommand : IRequest
+public class CreateItemCommand : IRequest<int>
 {
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;
