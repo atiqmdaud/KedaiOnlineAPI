@@ -1,4 +1,5 @@
 ﻿using KedaiOnline.Application.Items.Commands.CreateItem;
+using KedaiOnline.Application.Items.Commands.DeleteItems;
 using KedaiOnline.Application.Items.Dtos;
 using KedaiOnline.Application.Items.Queries.GetItem;
 using KedaiOnline.Application.Items.Queries.GetItems;
@@ -32,4 +33,15 @@ public class ItemsController(IMediator mediator) : ControllerBase
         var item = await mediator.Send(new GetItemQuery(kedaiId, itemId));
         return Ok(item);
     }
+
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteItems([FromRoute] int kedaiId)
+    {
+        await mediator.Send(new DeleteItemsCommand(kedaiId));
+        return NoContent();
+    }
+
+
+
 }

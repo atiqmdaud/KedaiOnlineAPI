@@ -12,4 +12,10 @@ internal class ItemsRepository(KedaiOnlineDbContext dbContext) : IItemsRepositor
         await dbContext.SaveChangesAsync();
         return entity.Id;
     }
+
+    public async Task DeleteItems(IEnumerable<Item> entities)
+    {
+        dbContext.Items.RemoveRange(entities);
+        await dbContext.SaveChangesAsync();
+    }
 }
