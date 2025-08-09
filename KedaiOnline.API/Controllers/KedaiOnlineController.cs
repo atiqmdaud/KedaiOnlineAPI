@@ -6,15 +6,18 @@ using KedaiOnline.Application.KedaiOnline.Dtos;
 using KedaiOnline.Application.KedaiOnline.Queries.GetAllKedaiOnline;
 using KedaiOnline.Application.KedaiOnline.Queries.GetKedaiById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KedaiOnline.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class KedaiOnlineController(IMediator mediator):ControllerBase
 {
     [HttpGet]
+    [AllowAnonymous]
     //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<KedaiDto>))]
     public async Task<ActionResult<IEnumerable<KedaiDto>>> GetAll()
         {

@@ -1,10 +1,13 @@
 @KedaiOnline.API_HostAddress = https://localhost:7039
+@token = CfDJ8FcEiKa3i-ZKiQfyrPLUBANU4bnTbnjqcdYU3x3hBron-7JMtEp4Hq7HsihhHYvIbW_y88QMC7xaWCcH4BjKVoUl-UQ6MMhFt7G3ar317Amn8Zwe6zInWldfZzGZX3RwotPmasokBraDRLcsnqsaFWP3NvCu2gGCdELew7gS3NnFzWvovVM0ulL9HDwhyfsk6DXc-5sv2QiK5Na74Im0N6N430WdGjl2O4YxXGhDwZ8HWmrB7AoyDp70lPesBEla2QG_sZgIPMcKAewevYZ1ax2CZkgNydgUdLQBR1lenOnt6FgfY2uWde7A-3YNBT06l89pihz2ep3mjjtLdN_XAVVfbsDX-AtXHXwKdzZycADwNo2s8Wwhw_ybdIkWOQ_7IuW92oDVAM5nemohVFIO7lAdsLYYE3ufCLvm5CuUTxRt8WTBV0WhFoPuXASNOIaOWP0_NMSqkkLSihMJiuozyg7l8D3d63Q_7hJ0gssiaOEuoR4FQiqwWtDnMQ-A08l9S0N3PJKxuwizPQ2DjUID4m8Y69QS0n6qLuCU3_EoIJ0StzBgRE-VDxMsK8_16dPpXYdrSVkmH2fJi9Iar_GMEgqj6VmNyLDeXpN46WbjMa3ivWL7orSpTVkHCbJNLNOXMWOMo7h9p1SPazmea43v2GOWeoAD2OaV5k-LYO60pw3eAxgofpc0C3fnWtcayhgL7w
+
 
 GET {{KedaiOnline.API_HostAddress}}/api/kedaionline
-
+Authorization: Bearer {{token}}
 ###
 
 GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/1
+Authorization: Bearer {{token}}
 
 ###
 
@@ -68,7 +71,7 @@ GET https://localhost:7039/api/kedaionline/1/items/27
 
 ###
 
-POST {{KedaiOnline.API_HostAddress}}/register
+POST {{KedaiOnline.API_HostAddress}}/api/identity/register
 Content-Type: application/json
 
 {
@@ -78,7 +81,7 @@ Content-Type: application/json
 
 ###
 
-POST {{KedaiOnline.API_HostAddress}}/login
+POST {{KedaiOnline.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {

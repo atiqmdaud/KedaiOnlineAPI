@@ -10,6 +10,7 @@ public static class WebApplicationBuilderExt
 {
     public static void AddPresentation(this WebApplicationBuilder builder)
     {
+        builder.Services.AddAuthentication();
         builder.Services.AddSwaggerGen(c =>
         {
             c.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme
