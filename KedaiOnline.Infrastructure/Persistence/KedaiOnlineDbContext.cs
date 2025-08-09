@@ -1,9 +1,11 @@
 ﻿using KedaiOnline.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace KedaiOnline.Infrastructure.Persistence;
 
-internal class KedaiOnlineDbContext(DbContextOptions<KedaiOnlineDbContext> options) : DbContext(options)
+internal class KedaiOnlineDbContext(DbContextOptions<KedaiOnlineDbContext> options) :
+    IdentityDbContext<User>(options)
 {
     internal DbSet<Kedai> KedaiOnline { get; set; }
     internal DbSet<Item> Items { get; set; }

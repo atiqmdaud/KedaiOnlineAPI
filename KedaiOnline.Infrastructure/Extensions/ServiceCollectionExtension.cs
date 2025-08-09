@@ -1,4 +1,5 @@
-﻿using KedaiOnline.Domain.Repositories;
+﻿using KedaiOnline.Domain.Entities;
+using KedaiOnline.Domain.Repositories;
 using KedaiOnline.Infrastructure.Persistence;
 using KedaiOnline.Infrastructure.Repositories;
 using KedaiOnline.Infrastructure.Seeders;
@@ -23,6 +24,9 @@ public static class ServiceCollectionExtension
         services.AddDbContext<KedaiOnlineDbContext>(Options => 
         Options.UseSqlServer(connectionString)
             .EnableSensitiveDataLogging());
+
+        services.AddIdentityApiEndpoints<User>()
+            .AddEntityFrameworkStores<KedaiOnlineDbContext>();
 
         // Register the seeder
         services.AddScoped<IKedaiSeeder, KedaiSeeder>();//scope bucause it depends on DbContext

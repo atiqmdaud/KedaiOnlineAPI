@@ -67,3 +67,23 @@ DELETE {{KedaiOnline.API_HostAddress}}/api/kedaionline/1/items/
 GET https://localhost:7039/api/kedaionline/1/items/27
 
 ###
+
+POST {{KedaiOnline.API_HostAddress}}/register
+Content-Type: application/json
+
+{
+    "email" : "test@test.com",
+    "password" : "Password1!"
+}
+
+###
+
+POST {{KedaiOnline.API_HostAddress}}/login
+Content-Type: application/json
+
+{
+    "email" : "test@test.com",
+    "password" : "Password1!"
+}
+
+###

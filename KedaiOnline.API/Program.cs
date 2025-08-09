@@ -8,10 +8,38 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Compact;
 using KedaiOnline.API.Middlewares;
+using KedaiOnline.Domain.Entities;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "bearerAuth"
+                }
+            },
+            //Array.Empty<string>()
+            []
+        }
+    });
+
+});
+
+builder.Services.AddEndpointsApiExplorer();
 
 // Add services to the container.
 //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -28,8 +56,6 @@ builder.Host.UseSerilog((context, configuration)=>
 configuration
     .ReadFrom.Configuration(context.Configuration)
 );
-
-new CompactJsonFormatter();
 
 var app = builder.Build();
 
@@ -51,6 +77,8 @@ app.UseSwaggerUI();
 
 
 app.UseHttpsRedirection();
+
+app.MapGroup("api/identity").MapIdentityApi<User>();
 
 app.UseAuthorization();
 
