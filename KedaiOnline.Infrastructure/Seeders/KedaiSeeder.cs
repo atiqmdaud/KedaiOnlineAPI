@@ -31,9 +31,18 @@ internal class KedaiSeeder(KedaiOnlineDbContext dbContext) : IKedaiSeeder
     private IEnumerable<IdentityRole> GetRoles()
     {
         List<IdentityRole> roles = [
-            new(UserRoles.Admin),
-            new(UserRoles.Owner),
+            new(UserRoles.Admin)
+            {
+                NormalizedName = UserRoles.Admin.ToUpper()
+            },
+            new(UserRoles.Owner)
+            {
+                NormalizedName = UserRoles.Owner.ToUpper()
+            },
             new(UserRoles.User)
+            { 
+                NormalizedName = UserRoles.User.ToUpper()
+            }
   
         ];
 

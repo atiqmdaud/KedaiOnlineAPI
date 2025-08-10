@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace KedaiOnline.Application.Users.Comands;
+namespace KedaiOnline.Application.Users.Comands.UpdateUserDetails;
 
 public class UpdateUserDetailsCommand : IRequest
 {
