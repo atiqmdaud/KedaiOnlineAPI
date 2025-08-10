@@ -1,5 +1,5 @@
 @KedaiOnline.API_HostAddress = https://localhost:7039
-@token = CfDJ8FcEiKa3i-ZKiQfyrPLUBANU4bnTbnjqcdYU3x3hBron-7JMtEp4Hq7HsihhHYvIbW_y88QMC7xaWCcH4BjKVoUl-UQ6MMhFt7G3ar317Amn8Zwe6zInWldfZzGZX3RwotPmasokBraDRLcsnqsaFWP3NvCu2gGCdELew7gS3NnFzWvovVM0ulL9HDwhyfsk6DXc-5sv2QiK5Na74Im0N6N430WdGjl2O4YxXGhDwZ8HWmrB7AoyDp70lPesBEla2QG_sZgIPMcKAewevYZ1ax2CZkgNydgUdLQBR1lenOnt6FgfY2uWde7A-3YNBT06l89pihz2ep3mjjtLdN_XAVVfbsDX-AtXHXwKdzZycADwNo2s8Wwhw_ybdIkWOQ_7IuW92oDVAM5nemohVFIO7lAdsLYYE3ufCLvm5CuUTxRt8WTBV0WhFoPuXASNOIaOWP0_NMSqkkLSihMJiuozyg7l8D3d63Q_7hJ0gssiaOEuoR4FQiqwWtDnMQ-A08l9S0N3PJKxuwizPQ2DjUID4m8Y69QS0n6qLuCU3_EoIJ0StzBgRE-VDxMsK8_16dPpXYdrSVkmH2fJi9Iar_GMEgqj6VmNyLDeXpN46WbjMa3ivWL7orSpTVkHCbJNLNOXMWOMo7h9p1SPazmea43v2GOWeoAD2OaV5k-LYO60pw3eAxgofpc0C3fnWtcayhgL7w
+@token = CfDJ8FcEiKa3i-ZKiQfyrPLUBAPHYxHGr6RRwPUnHmZywDk1KzErneQsFJMWrAEn98seqqWAOpfK8SFWuKAME5aJasYlNHLiJcut5_LZqZiPX_-A3uTmzn1ODqfZ4tcWrEaULOmPxfzE4OSX-Jk1TUocE7pBM-Vh5I6eUTKV70PArRp67iZv-TAcjJw78cF5sLpUaUN899yW37V6EujM_XBU2IYQR-K_ijQ710kJJZ64AA-a-5mLG3MK6kFEb7TAfslTg3Dz9vw4QrvFADFrIxembW4xY5y4RPS2eomdfCz6URlzdKEnrLhvBU9LEEhw5BcqHvgCUFNOQrlqu0MUfLPzkYfwQrBd9b9YRBzvCNKixbeazVjbe6-sjv-wxg4p6zU6uZusM5PbH99bGBMw32iw12l89Cc8jEFz7fxbj4rVACmqLDmZVyIyq2U1nt8Xp8ogp7QjrhLs5e2kmp80B8VMjpF0HnrVeRBSMp1v2yrkgWHWAXWwALzHf7QJjqGRn2Qbn0xvR3P6Iq3k46ylPglNfDR6EhnW5Mcd0sLmM9Gf4RCGp8hyNOWpVkDPw2UHmwPnsKDWSGhmoWX7RlKwu0HH2ghkjrdj0D9uzZgndjl2mubESYWwIVYgzqyWXXmrKnZK-2ZKYrRrCSTtQL04QVG4kkWm9uifv17JJz_ozsj9kGNL83RwcFn4-0wVKKBAfDbm7wthre57Np-t05BM0VQxGmapxTHsa8ol8QaCBaeTZXOso11_QiHFmDRgW5u0c8t5Lw5utIAe-Hg8Q4uPClyjSVvsd8n_v2q7K3h7mFnFYr09
 
 
 GET {{KedaiOnline.API_HostAddress}}/api/kedaionline
@@ -17,6 +17,7 @@ DELETE {{KedaiOnline.API_HostAddress}}/api/kedaionline/8
 
 POST {{KedaiOnline.API_HostAddress}}/api/kedaionline
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "Nama" : "Kedai 13",
@@ -75,9 +76,8 @@ POST {{KedaiOnline.API_HostAddress}}/api/identity/register
 Content-Type: application/json
 
 {
-    "email" : "test3@test.com",
-    "password" : "Password3!",
-    "Nationality" : "Malaysian"
+    "email" : "owner@test.com",
+    "password" : "Password1!"
 }
 
 ###
@@ -86,7 +86,7 @@ POST {{KedaiOnline.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-    "email" : "test@test.com",
+    "email" : "owner@test.com",
     "password" : "Password1!"
 }
 

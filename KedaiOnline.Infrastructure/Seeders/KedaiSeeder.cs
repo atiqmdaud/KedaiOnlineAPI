@@ -1,5 +1,7 @@
-﻿using KedaiOnline.Domain.Entities;
+﻿using KedaiOnline.Domain.Constants;
+using KedaiOnline.Domain.Entities;
 using KedaiOnline.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Identity;
 
 namespace KedaiOnline.Infrastructure.Seeders;
 
@@ -16,7 +18,26 @@ internal class KedaiSeeder(KedaiOnlineDbContext dbContext) : IKedaiSeeder
                 await dbContext.SaveChangesAsync();
             }
 
+            if (!dbContext.Roles.Any())
+            {
+                var roles = GetRoles();
+                dbContext.Roles.AddRange(roles);
+                await dbContext.SaveChangesAsync();
+            }
+
         }
+    }
+
+    private IEnumerable<IdentityRole> GetRoles()
+    {
+        List<IdentityRole> roles = [
+            new(UserRoles.Admin),
+            new(UserRoles.Owner),
+            new(UserRoles.User)
+  
+        ];
+
+        return roles;
     }
 
     private IEnumerable<Kedai> GetKedaiOnline()

@@ -3,6 +3,7 @@ using KedaiOnline.Domain.Repositories;
 using KedaiOnline.Infrastructure.Persistence;
 using KedaiOnline.Infrastructure.Repositories;
 using KedaiOnline.Infrastructure.Seeders;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,7 @@ public static class ServiceCollectionExtension
             .EnableSensitiveDataLogging());
 
         services.AddIdentityApiEndpoints<User>()
+            .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<KedaiOnlineDbContext>();
 
         // Register the seeder

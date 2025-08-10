@@ -5,6 +5,7 @@ using KedaiOnline.Application.KedaiOnline.Commands.UpdateKedai;
 using KedaiOnline.Application.KedaiOnline.Dtos;
 using KedaiOnline.Application.KedaiOnline.Queries.GetAllKedaiOnline;
 using KedaiOnline.Application.KedaiOnline.Queries.GetKedaiById;
+using KedaiOnline.Domain.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,7 @@ public class KedaiOnlineController(IMediator mediator):ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = UserRoles.Owner)]
     public async Task<IActionResult> CreateKedai(CreateKedaiCommand command )
     {
         if (!ModelState.IsValid)
