@@ -75,8 +75,9 @@ POST {{KedaiOnline.API_HostAddress}}/api/identity/register
 Content-Type: application/json
 
 {
-    "email" : "test@test.com",
-    "password" : "Password1!"
+    "email" : "test3@test.com",
+    "password" : "Password3!",
+    "Nationality" : "Malaysian"
 }
 
 ###

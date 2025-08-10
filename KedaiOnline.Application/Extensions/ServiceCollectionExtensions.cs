@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
 using KedaiOnline.Application.KedaiOnline;
+using KedaiOnline.Application.Users;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KedaiOnline.Application.Extensions;
@@ -17,6 +18,10 @@ public static class ServiceCollectionExtensions
 
         services.AddValidatorsFromAssembly(applicationAssembly)
             .AddFluentValidationAutoValidation();
+
+        services.AddScoped<IUserContext, UserContext>();
+
+        services.AddHttpContextAccessor();
 
     }
 }

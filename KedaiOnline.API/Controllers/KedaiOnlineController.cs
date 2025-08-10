@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace KedaiOnline.API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/kedaionline")]
 [Authorize]
 public class KedaiOnlineController(IMediator mediator):ControllerBase
 {
