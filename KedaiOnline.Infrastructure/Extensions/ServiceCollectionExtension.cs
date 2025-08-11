@@ -1,5 +1,6 @@
 ﻿using KedaiOnline.Domain.Entities;
 using KedaiOnline.Domain.Repositories;
+using KedaiOnline.Infrastructure.Authorization;
 using KedaiOnline.Infrastructure.Persistence;
 using KedaiOnline.Infrastructure.Repositories;
 using KedaiOnline.Infrastructure.Seeders;
@@ -28,6 +29,7 @@ public static class ServiceCollectionExtension
 
         services.AddIdentityApiEndpoints<User>()
             .AddRoles<IdentityRole>()
+            .AddClaimsPrincipalFactory<KedaiOnlineUserClaimsPrincipleFactory>()
             .AddEntityFrameworkStores<KedaiOnlineDbContext>();
 
         // Register the seeder

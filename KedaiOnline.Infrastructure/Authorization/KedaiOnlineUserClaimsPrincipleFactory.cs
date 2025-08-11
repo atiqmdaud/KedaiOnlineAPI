@@ -1,0 +1,29 @@
+﻿using System.Security.Claims;
+using KedaiOnline.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+
+namespace KedaiOnline.Infrastructure.Authorization;
+
+public class KedaiOnlineUserClaimsPrincipleFactory(UserManager<User> userManager,
+    RoleManager<IdentityRole> roleManager,
+    IOptions<IdentityOptions> options)
+        : UserClaimsPrincipalFactory<User, IdentityRole>(userManager, roleManager, options)
+{
+    public override async Task<ClaimsPrincipal> CreateAsync(User user)
+    {
+        var id = await GenerateClaimsAsync(user);
+
+        if (user.Nationality != null)
+        {
+            id.AddClaim(new Claim("Nationality", user.Nationality));
+        }
+
+        if (user.DateOfBirth != null)
+        {
+            id.AddClaim(new Claim("dateOfBirth", user.DateOfBirth.Value.ToString("yyyy-MM-dd")));
+        }
+
+        return new ClaimsPrincipal(id);
+    }
+}
