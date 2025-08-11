@@ -1,4 +1,5 @@
 ﻿using KedaiOnline.Application.Users.Comands.AssignUserRole;
+using KedaiOnline.Application.Users.Comands.UnassignUserRole;
 using KedaiOnline.Application.Users.Comands.UpdateUserDetails;
 using KedaiOnline.Domain.Constants;
 using MediatR;
@@ -26,7 +27,13 @@ public class IdentityController(IMediator mediator) : ControllerBase
     {
         await mediator.Send(command);
         return NoContent();
-
     }
 
+    [HttpDelete("userRole")]
+    [Authorize(Roles = UserRoles.Admin)]
+    public async Task<IActionResult> UnassignUserRole(UnassignUserRoleCommand command)
+    {
+        await mediator.Send(command);
+        return NoContent();
+    }
 }
