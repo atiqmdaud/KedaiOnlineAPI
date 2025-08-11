@@ -6,6 +6,7 @@ using KedaiOnline.Application.KedaiOnline.Dtos;
 using KedaiOnline.Application.KedaiOnline.Queries.GetAllKedaiOnline;
 using KedaiOnline.Application.KedaiOnline.Queries.GetKedaiById;
 using KedaiOnline.Domain.Constants;
+using KedaiOnline.Infrastructure.Authorization;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,7 @@ public class KedaiOnlineController(IMediator mediator):ControllerBase
 
 
     [HttpGet("{id}")]
+    [Authorize(Policy = PolicyNames.HasNationality)]
     public async Task<ActionResult<KedaiDto?>> GetById([FromRoute]int id)
     {
         var kedai = await mediator.Send(new GetKedaiByIdQuery(id));

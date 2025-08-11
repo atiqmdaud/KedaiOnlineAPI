@@ -36,5 +36,8 @@ public static class ServiceCollectionExtension
         services.AddScoped<IKedaiSeeder, KedaiSeeder>();//scope bucause it depends on DbContext
         services.AddScoped<IKedaiOnlineRepository, KedaiOnlineRepository>();
         services.AddScoped<IItemsRepository, ItemsRepository>();
+
+        services.AddAuthorizationBuilder()
+            .AddPolicy(PolicyNames.HasNationality, builder => builder.RequireClaim(AppClaimTypes.Nationality, "German", "Malaysia"));
     }
 }
