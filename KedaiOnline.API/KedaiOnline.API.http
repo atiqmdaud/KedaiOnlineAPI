@@ -1,5 +1,5 @@
 @KedaiOnline.API_HostAddress = https://localhost:7039
-@token = CfDJ8FcEiKa3i-ZKiQfyrPLUBAPkB47e2IyfoP1WulHybYiaVuD9vsyFKbV8c563HE5DP2fExcMyakasn0rW9lW5FJXdYvPp8msKvOpdAaw_reaC44lmwpbiNu_IIsmpSW-xKEuXOO1lLllOtSaNT4G4SPE2hskj2XLc8B72p0wnkr23TMOcmb90keXSoMuJ9nk42cbtzZ8x0rvBuFaSstpZ9ut-LTQ964nQPkkXn0U1IgKvjbAksN57bt7zDntrnbqRz237RsCwwHNhcSdNos6gq0qNK-4z5Dy4KIisJTEI7N-325a4aIrj9cfuY1B_XkxbKzm73QBf6ra-M6VeFTz33x9Y4eRx0EQqTpIaaO5RDvuiJnHLsf0jwtvLjggydl0PG9mCzz3Lj-jtC9W58ZQDGSQDaaOfkCT_ie241_qvjQmpCQBQusMlNndwj2UPbry1JGfO4I62kMYl_03V9cTNs43hJhWtMujK4oyoJuqo-no-qFSBIOLLijZKrYVC9Ei-EkjoF8aSLfQDJdY1bPFzX_wEoYRWIcLCVCNJziNYVVTBTt8RNDFG1BWrPWZYUlGipwtOwWxHMYwwprCKLVznNuRspo9DedghJBuk_-WcMmDukx4PwB_8aKSGxkefmldYjfYYNxnz68uD9Tbik6UPDDH5Hs8nH7nfY8N_XzpDhZ8_f8OydmdRqG4yvvLTCMd4cpvEuS9NImk62IuLNKlbaS_Jql3aHdMif-oZ0iA774uiEzUX1q_YB_6uaPpfAE6khhuVQ_zV2HeUlUNNNMWhQmM
+@token =  CfDJ8FcEiKa3i-ZKiQfyrPLUBAOWYOx3Ac_IZw5m5kwCp5__vD6LVc7M1afB4B_3f8tbrBgwMxzfgV2otQfni0tDoVrtuubgZD7mBR3ssMa_Q1ZSa7WPpiSnWjKp26FkIqvvlp7KRsOk77-oB1G2ZRomSXX4uwg8vbB4PmBUZOdDjaZPO_OIBa2HMjXCeIORCZgkrD5FMoedV1a75IGfb_QHPei-XLg60MVZzHKrm6scvO6xAoEyXHmhUpghv-JJh_fsldSMZ8WEstmiOqna5AycszncMNyx8J9NUu1hErz9lXAuyo9loZuehulAbHzNpQZFCLxLzatYwvd0rE93HwSwuk6vwEp3ZaX1rI9c5kfOpxxtdnCOBie0xLNkIMPh8ugYvjqZvgl-5dS9ltkTd4A8u7db6d4-uGeW4TMM_CrfJynf47InUaU_7t5QuuPNZauxhjdCdJXCkG1E0g_9VrGRI9u9NFz4hwUdleLG3YMoM87iCWZXLZ-EET0G_IL0wIaNwSTv1onsxhfc12__6ujWZWZxnyMQCPVLNwzTyQelWAX0kivHRS42b6hDjlXjgyJHRgC6QZ5D4CaLCT2epnGImYgWk-37eNgRtJoQPOjiXIeeCCjqOTbAoqCYgpRM_puFhBZC_uHic0iNafNCARRnXrQRaxv4dF-X4eLpd7v2D2R2FThBp5x4huUAOGbrkiaOSYXz9lSaHDvcz96JEd-cgfl96younYh89z3MUnn47Bn9d3ufCmJD8BLBvBMfWauAdAuPWPil9NB84MUDVctWgFDL7YyJ479zGVq8bvlV6zYQC06Rto0bK6RUSnsu_WcnSSeVts_SUArqHs53JXzzCnOlvKVO2OvDZijUBmOv1iH33jpaQDp2h56N4kQ-AfZ56w
 
 GET {{KedaiOnline.API_HostAddress}}/api/kedaionline
 Authorization: Bearer {{token}}
@@ -60,6 +60,7 @@ Content-Type: application/json
 ###
 
 GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/1/items/
+Authorization : Bearer {{token}}
 
 ###
 
@@ -85,8 +86,18 @@ POST {{KedaiOnline.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-    "email" : "test@test.com",
+    "email" : "owner@test.com",
     "password" : "Password1!"
+}
+
+###
+PATCH {{KedaiOnline.API_HostAddress}}/api/identity/user
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nationality" : "Malaysia",
+  "DateOfBirth" : "2010-01-01"
 }
 
 ###

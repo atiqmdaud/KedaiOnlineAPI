@@ -3,13 +3,16 @@ using KedaiOnline.Application.Items.Commands.DeleteItems;
 using KedaiOnline.Application.Items.Dtos;
 using KedaiOnline.Application.Items.Queries.GetItem;
 using KedaiOnline.Application.Items.Queries.GetItems;
+using KedaiOnline.Infrastructure.Authorization;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KedaiOnline.API.Controllers;
 
 [Route("api/kedaionline/{kedaiId}/items")]
 [ApiController]
+[Authorize]
 public class ItemsController(IMediator mediator) : ControllerBase
 {
     [HttpPost]
@@ -21,6 +24,7 @@ public class ItemsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet]
+    [Authorize(Policy = PolicyNames.AtLeast18)]
     public async Task<ActionResult<IEnumerable<ItemDto>>> GetItems([FromRoute] int kedaiId)
     {
         var items = await mediator.Send(new GetItemsQuery(kedaiId));

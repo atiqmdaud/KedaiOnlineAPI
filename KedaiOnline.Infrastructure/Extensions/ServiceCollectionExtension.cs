@@ -1,9 +1,11 @@
 ﻿using KedaiOnline.Domain.Entities;
 using KedaiOnline.Domain.Repositories;
 using KedaiOnline.Infrastructure.Authorization;
+using KedaiOnline.Infrastructure.Authorization.Requirements;
 using KedaiOnline.Infrastructure.Persistence;
 using KedaiOnline.Infrastructure.Repositories;
 using KedaiOnline.Infrastructure.Seeders;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,6 +40,11 @@ public static class ServiceCollectionExtension
         services.AddScoped<IItemsRepository, ItemsRepository>();
 
         services.AddAuthorizationBuilder()
-            .AddPolicy(PolicyNames.HasNationality, builder => builder.RequireClaim(AppClaimTypes.Nationality, "German", "Malaysia"));
+            .AddPolicy(PolicyNames.HasNationality,
+            builder => builder.RequireClaim(AppClaimTypes.Nationality, "German", "Malaysia"))
+            .AddPolicy(PolicyNames.AtLeast18,
+            builder=>builder.AddRequirements(new MinimumAgeRequirement(18)));
+
+        services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
     }
 }
