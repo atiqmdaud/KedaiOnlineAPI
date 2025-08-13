@@ -1,7 +1,9 @@
 ﻿using KedaiOnline.Domain.Entities;
+using KedaiOnline.Domain.Interfaces;
 using KedaiOnline.Domain.Repositories;
 using KedaiOnline.Infrastructure.Authorization;
 using KedaiOnline.Infrastructure.Authorization.Requirements;
+using KedaiOnline.Infrastructure.Authorization.Services;
 using KedaiOnline.Infrastructure.Persistence;
 using KedaiOnline.Infrastructure.Repositories;
 using KedaiOnline.Infrastructure.Seeders;
@@ -18,11 +20,6 @@ public static class ServiceCollectionExtension
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        // Register your infrastructure services here
-        // Example: services.AddScoped<IYourService, YourServiceImplementation>();
-
-        // This is a placeholder for actual service registrations
-        // services.AddScoped<IExampleService, ExampleService>();
 
         var connectionString = configuration.GetConnectionString("KedaiOnlineDb");
         services.AddDbContext<KedaiOnlineDbContext>(Options => 
@@ -34,8 +31,7 @@ public static class ServiceCollectionExtension
             .AddClaimsPrincipalFactory<KedaiOnlineUserClaimsPrincipleFactory>()
             .AddEntityFrameworkStores<KedaiOnlineDbContext>();
 
-        // Register the seeder
-        services.AddScoped<IKedaiSeeder, KedaiSeeder>();//scope bucause it depends on DbContext
+        services.AddScoped<IKedaiSeeder, KedaiSeeder>();//scope because it depends on DbContext
         services.AddScoped<IKedaiOnlineRepository, KedaiOnlineRepository>();
         services.AddScoped<IItemsRepository, ItemsRepository>();
 
@@ -46,5 +42,7 @@ public static class ServiceCollectionExtension
             builder=>builder.AddRequirements(new MinimumAgeRequirement(18)));
 
         services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
+
+        services.AddScoped<IKedaiAuthorizationService, KedaiAuthorizationService>();
     }
 }

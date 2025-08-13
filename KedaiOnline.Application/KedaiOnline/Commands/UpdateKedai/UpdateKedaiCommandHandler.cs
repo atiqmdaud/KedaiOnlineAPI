@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using KedaiOnline.Application.KedaiOnline.Commands.DeleteKedai;
+using KedaiOnline.Domain.Constants;
 using KedaiOnline.Domain.Entities;
 using KedaiOnline.Domain.Exceptions;
+using KedaiOnline.Domain.Interfaces;
 using KedaiOnline.Domain.Repositories;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -9,7 +11,8 @@ using Microsoft.Extensions.Logging;
 namespace KedaiOnline.Application.KedaiOnline.Commands.UpdateKedai;
 
 public class UpdateKedaiCommandHandler(ILogger<UpdateKedaiCommandHandler> logger,
-    IKedaiOnlineRepository kedaiOnlineRepository, IMapper mapper) : IRequestHandler<UpdateKedaiCommand>
+    IKedaiOnlineRepository kedaiOnlineRepository, IMapper mapper,
+    IKedaiAuthorizationService kedaiAuthorizationService) : IRequestHandler<UpdateKedaiCommand>
 {
     public async Task Handle(UpdateKedaiCommand request, CancellationToken cancellationToken)
     {
@@ -18,6 +21,11 @@ public class UpdateKedaiCommandHandler(ILogger<UpdateKedaiCommandHandler> logger
         if (kedai is null)
         {
             throw new NotFoundException(nameof(Kedai), request.Id.ToString());
+        }
+
+        if (!kedaiAuthorizationService.Authorize(kedai, ResourceOperation.Update))
+        {
+            throw new ForbidException();
         }
 
         mapper.Map(request, kedai);

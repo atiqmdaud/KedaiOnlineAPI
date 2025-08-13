@@ -1,5 +1,5 @@
 @KedaiOnline.API_HostAddress = https://localhost:7039
-@token =   CfDJ8FcEiKa3i-ZKiQfyrPLUBANgQc7a7sUi_Ii4i1ZQXoGQgi1AhoUSgjAQ5Sikpb1PeKuXh7bFoh_SAH5w5PBn6eyVCFF3BZXfDIdrSmfFPdm5uaU1Jo5Ix_GFCTEuPf0xQAIvLmOSyP71Jc-TQiPuZCUo7RiILFJoVAe00eznQvFQi1E93Wa0MqNHXFxFME29r6XX0kZvM2WuB5k5v3L8WVf6PfFbM_9nMHPrQE1U0qIAjJnfJSRb9rkjwo8GqZ9-jdey7VlUbOcp4ZC6Y4Uvvb54SH3FsK3xzYWOAAhGyR91uWLsQLm-zvdB45ZRuvfo-yCzSe144ESBlnCEsFHdyCP5M1PH-fQVORNRKZuTmLMSljrZqXV3pMyRxTYYOt8TcLqKB07kxqVbs3Xp0QYV1_K_92jsmvGzFQWf3FXVjoJ-FaY2ym3PUBoJ5147zmlwCHE1qFMTDMKUfFYm57fqU6wk81BSB-hnZcxnPMgI73PnVVU_hhA_4Y0MLcQzewx_crUGrtNR0atYBEFzugh0plobw5AzWMmd5U48mNvavQyZH3ALUk8mST4xHeyedtpyQYJd_0spyroPNQ5UiAKTFVQuKh0QzlxHWb6FhOiVBjt0rTr6i6KtAxRxsVMdfjmGOEJlsQ8bN_KAa33EyT7NpBy5o0CcOBiL77qz0jXgv0IrGqN8MHtob_dmkzXUSyc20pm_sJDo7bYRI6VGYVImSZQT1NNVYjMskYqoHU9nWMal49Y8wcIVPb9EbeJuKrGSvUsI24kQe2sk9bJZ0RnT805sCVEFzaFk4NIVBJ5eEhBdw7evqpHKX7vfWC9fpPyw0OARSP6VPrIvyH3h387BWbfuUZbIllMALX9jnRCLg9NApV1lMYp9esM4aixD4vHd4Q
+@token = CfDJ8FcEiKa3i-ZKiQfyrPLUBAMHnN5A5xYixgAG8Q-h4A5Ru7A04DaswIJlqshY9MV1H3KeKY0R4_ZGtYzlJdg9ejjREBOs269-pdR5nAslPD9zJny8Xv4ZIJtuvS0YTl7RmJQjoXDSiy5xKNcFTAyzvOXZotXwV9Bq2J8v5jQGxJYUTrhvgmNGTQzJyWmHBExwJhjhfx3MK4THgQYMMO5fua26GHXCMmAirdS249NxU66y0F-wbzu3yZaqqmSKosD7rQpbMpyW8V18s0RHLLvC-gHcyYyX68cjyZTBeOaLdLr6Eiz6EBQz1SyhtUgPwtuych4mbHtWkwi1OYJjX8uqBgaQx7nrmVBWqYjDbqDVqO0LuLz9Hs4gugt66i7v_dyjJTS90W283nDTUipMWto1bCrQXQc7Pjdo-S6b3_2dOtCkLv8OfK-j1UJ14zAAVreCA7GqippMiQDrz_UzLipEY4VuscPfpgkt22d1akC55zcNESJNktlHBEUDFp0rD9V71KAD8HUFo5QbTQR3jSHN1iYk-tC85fnSdZN_VRIEpd3rkrzNgeGnEFGE3IPzg49KC-v_kF-ioc0xz4hnLhDAK6iwkgz5butA3Nb073RH-vz2_ZZRy3gEiTDhJpyftTenUDaPetI8-CErSDOmim3LUo5cAFUdaibz9AJq69tLCY0z97oGIMg8ix8nQju_OjIGakKsCj46-vXoi4KcZStgDcx5LOMCYuZSBD3KwKRG3t3wotGgjwGhdVG-k3XQAA_GLaFUM9zrd5GkNucAwkdYg2fNgqZhL_vu_MulPduGsinhkponBj4fj2y0s6TAoIJwZ7kvMtWIJxI2yR1TIgKcGEqcHTSTvUO0gQIQxafTomdjTiO3OGtD689I6TVEs7f12Q
 
 GET {{KedaiOnline.API_HostAddress}}/api/kedaionline
 Authorization: Bearer {{token}}
@@ -10,7 +10,8 @@ Authorization: Bearer {{token}}
 
 ###
 
-DELETE {{KedaiOnline.API_HostAddress}}/api/kedaionline/8
+DELETE {{KedaiOnline.API_HostAddress}}/api/kedaionline/18
+Authorization: Bearer {{token}}
 
 ###
 
@@ -34,14 +35,15 @@ Authorization: Bearer {{token}}
 GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/3
 
 ###
-GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/10
+GET {{KedaiOnline.API_HostAddress}}/api/kedaionline/18
 
 ###
-PATCH {{KedaiOnline.API_HostAddress}}/api/kedaionline/8
+PATCH {{KedaiOnline.API_HostAddress}}/api/kedaionline/18
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
-    "Nama" : "Kedai 13",
+    "Nama" : "Updated name",
     "Description" : "Kedai 12 Description",
     "HasDelivery" : "ya"
 }

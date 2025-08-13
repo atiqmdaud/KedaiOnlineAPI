@@ -20,7 +20,13 @@ namespace KedaiOnline.API.Middlewares
 
                 logger.LogWarning(notfound.Message);
             }
-            
+
+            catch (ForbidException)
+            {
+                context.Response.StatusCode = 403;
+                await context.Response.WriteAsync("Access forbidded");
+            }
+
             catch (Exception ex)
             {
                 logger.LogError(ex, ex.Message);

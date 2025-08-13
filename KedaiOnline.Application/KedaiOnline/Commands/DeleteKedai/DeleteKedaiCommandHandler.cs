@@ -1,5 +1,7 @@
-﻿using KedaiOnline.Domain.Entities;
+﻿using KedaiOnline.Domain.Constants;
+using KedaiOnline.Domain.Entities;
 using KedaiOnline.Domain.Exceptions;
+using KedaiOnline.Domain.Interfaces;
 using KedaiOnline.Domain.Repositories;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -7,7 +9,8 @@ using Microsoft.Extensions.Logging;
 namespace KedaiOnline.Application.KedaiOnline.Commands.DeleteKedai;
 
 public class DeleteKedaiCommandHandler(ILogger<DeleteKedaiCommandHandler> logger,
-    IKedaiOnlineRepository kedaiOnlineRepository) : IRequestHandler<DeleteKedaiCommand>
+    IKedaiOnlineRepository kedaiOnlineRepository,
+    IKedaiAuthorizationService kedaiAuthorizationService) : IRequestHandler<DeleteKedaiCommand>
 {
     public async Task Handle(DeleteKedaiCommand request, CancellationToken cancellationToken)
     {
@@ -16,6 +19,11 @@ public class DeleteKedaiCommandHandler(ILogger<DeleteKedaiCommandHandler> logger
         if (kedai is null)
         {
             throw new NotFoundException(nameof(Kedai), request.Id.ToString());
+        }
+
+        if (!kedaiAuthorizationService.Authorize(kedai, ResourceOperation.Delete))
+        {
+            throw new ForbidException();
         }
 
         await kedaiOnlineRepository.DeleteAsync(kedai);
