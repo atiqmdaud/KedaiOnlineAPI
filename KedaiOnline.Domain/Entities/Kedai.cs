@@ -14,6 +14,9 @@ public class Kedai
     public Address? Address { get; set; }
     public List<Item> Items { get; set; } = new();
 
+    public User Owner { get; set; } = default!;
+    public string OwnerId { get; set; } = default!;
+
 
 
 
