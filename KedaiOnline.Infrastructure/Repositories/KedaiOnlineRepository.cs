@@ -27,15 +27,24 @@ internal class KedaiOnlineRepository(KedaiOnlineDbContext dbContext) : IKedaiOnl
         return kedaiOnline;
     }
 
-    public async Task<IEnumerable<Kedai>> GetAllMatchingAsync(string? searchTerm)
+    public async Task<(IEnumerable<Kedai>, int)> GetAllMatchingAsync(string? searchTerm, int pageSize, int pageNumber)
     {
         var searchTermLower = searchTerm?.ToLower();
-        var kedaiOnline = await dbContext
+
+        var baseQuery = dbContext
             .KedaiOnline
             .Where(r => searchTermLower == null || (r.Nama.ToLower().Contains(searchTermLower)
-                                                 || r.Description.ToLower().Contains(searchTermLower)))
+                                                 || r.Description.ToLower().Contains(searchTermLower)));
+        var totalCount = await baseQuery.CountAsync();
+
+        var kedaiOnline = await baseQuery
+            .Skip(pageSize * (pageNumber - 1))
+            .Take(pageSize)
             .ToListAsync();
-        return kedaiOnline;
+
+        //PageSize = 5, PageNumber = 3 : skip => PageSize * (PageNumber - 1) => 5 * (3 - 1) => skip 10 items
+
+        return (kedaiOnline, totalCount);
     }
 
     public async Task<Kedai?> GetByIdAsync(int id)

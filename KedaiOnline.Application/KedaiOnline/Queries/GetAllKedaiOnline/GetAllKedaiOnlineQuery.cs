@@ -1,9 +1,12 @@
-﻿using KedaiOnline.Application.KedaiOnline.Dtos;
+﻿using KedaiOnline.Application.Common;
+using KedaiOnline.Application.KedaiOnline.Dtos;
 using MediatR;
 
 namespace KedaiOnline.Application.KedaiOnline.Queries.GetAllKedaiOnline;
 
-public class GetAllKedaiOnlineQuery : IRequest<IEnumerable<KedaiDto>>
+public class GetAllKedaiOnlineQuery : IRequest<PagedResult<KedaiDto>>
 {
     public string? SearchTerm { get; set; }
+    public int PageNumber { get; set; }
+    public int PageSize { get; set; }
 }
