@@ -9,4 +9,5 @@ public interface IKedaiOnlineRepository
     Task<int> CreateAsync(Kedai entity);
     Task DeleteAsync(Kedai entity);
     Task SaveChangesAsync();
+    Task<IEnumerable<Kedai>> GetAllMatchingAsync(string? searchTerm);
 }

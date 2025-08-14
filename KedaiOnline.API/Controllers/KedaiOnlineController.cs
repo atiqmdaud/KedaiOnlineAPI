@@ -21,9 +21,9 @@ public class KedaiOnlineController(IMediator mediator):ControllerBase
     [HttpGet]
     [AllowAnonymous]
     //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<KedaiDto>))]
-    public async Task<ActionResult<IEnumerable<KedaiDto>>> GetAll()
+    public async Task<ActionResult<IEnumerable<KedaiDto>>> GetAll([FromQuery] GetAllKedaiOnlineQuery query)
         {
-        var kedaiOnline = await mediator.Send(new GetAllKedaiOnlineQuery());
+        var kedaiOnline = await mediator.Send(query);
         return Ok(kedaiOnline);
     }
 
