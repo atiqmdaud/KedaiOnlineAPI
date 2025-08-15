@@ -14,7 +14,10 @@ public class GetAllKedaiOnlineQueryHandler(ILogger<GetAllKedaiOnlineQueryHandler
     {
         logger.LogInformation("Fetching all Kedai Online");
         var (kedaiOnline, totalCount) = await kedaiOnlineRepository.GetAllMatchingAsync(request.SearchTerm,
-            request.PageSize,request.PageNumber);
+            request.PageSize,
+            request.PageNumber,
+            request.SortBy,
+            request.SortDirection);
         //var kedaiDtos = kedaiOnline.Select(KedaiDto.FromEntity);
         var kedaiDtos = mapper.Map<IEnumerable<KedaiDto>>(kedaiOnline);
 

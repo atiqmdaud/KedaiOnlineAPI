@@ -1,4 +1,5 @@
-﻿using KedaiOnline.Domain.Entities;
+﻿using KedaiOnline.Domain.Constants;
+using KedaiOnline.Domain.Entities;
 
 namespace KedaiOnline.Domain.Repositories;
 
@@ -9,5 +10,5 @@ public interface IKedaiOnlineRepository
     Task<int> CreateAsync(Kedai entity);
     Task DeleteAsync(Kedai entity);
     Task SaveChangesAsync();
-    Task<(IEnumerable<Kedai>,int)> GetAllMatchingAsync(string? searchTerm, int pageSize, int pageNumber);
+    Task<(IEnumerable<Kedai>,int)> GetAllMatchingAsync(string? searchTerm, int pageSize, int pageNumber, string? sortBy, SortDirection sortDirection);
 }

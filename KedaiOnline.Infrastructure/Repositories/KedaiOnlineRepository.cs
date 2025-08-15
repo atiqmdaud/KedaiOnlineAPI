@@ -1,4 +1,6 @@
-﻿using KedaiOnline.Domain.Entities;
+﻿using System.Linq.Expressions;
+using KedaiOnline.Domain.Constants;
+using KedaiOnline.Domain.Entities;
 using KedaiOnline.Domain.Repositories;
 using KedaiOnline.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +29,11 @@ internal class KedaiOnlineRepository(KedaiOnlineDbContext dbContext) : IKedaiOnl
         return kedaiOnline;
     }
 
-    public async Task<(IEnumerable<Kedai>, int)> GetAllMatchingAsync(string? searchTerm, int pageSize, int pageNumber)
+    public async Task<(IEnumerable<Kedai>, int)> GetAllMatchingAsync(string? searchTerm,
+        int pageSize,
+        int pageNumber,
+        string? sortBy,
+        SortDirection sortDirection)
     {
         var searchTermLower = searchTerm?.ToLower();
 
@@ -35,7 +41,28 @@ internal class KedaiOnlineRepository(KedaiOnlineDbContext dbContext) : IKedaiOnl
             .KedaiOnline
             .Where(r => searchTermLower == null || (r.Nama.ToLower().Contains(searchTermLower)
                                                  || r.Description.ToLower().Contains(searchTermLower)));
+
         var totalCount = await baseQuery.CountAsync();
+
+        if (sortBy != null)
+        {
+            //baseQuery = sortDirection == SortDirection.Ascending
+            //    ? baseQuery.OrderBy(r => EF.Property<object>(r, sortBy))
+            //    : baseQuery.OrderByDescending(r => EF.Property<object>(r, sortBy));
+
+            var columnsSelector = new Dictionary<string, Expression<Func<Kedai, object>>>()
+            {
+                { nameof(Kedai.Nama), r => r.Nama },
+                { nameof(Kedai.Description), r => r.Description },
+                { nameof(Kedai.Category), r => r.Category }
+            };
+
+            var selectedColumn = columnsSelector[sortBy];
+
+            baseQuery = sortDirection == SortDirection.Ascending
+                ? baseQuery.OrderBy(selectedColumn)
+                : baseQuery.OrderByDescending(selectedColumn);
+        }
 
         var kedaiOnline = await baseQuery
             .Skip(pageSize * (pageNumber - 1))

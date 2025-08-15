@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using KedaiOnline.Application.KedaiOnline.Dtos;
 using Microsoft.IdentityModel.Tokens;
 
 namespace KedaiOnline.Application.KedaiOnline.Queries.GetAllKedaiOnline;
@@ -6,6 +7,10 @@ namespace KedaiOnline.Application.KedaiOnline.Queries.GetAllKedaiOnline;
 public class GetAllKedaiOnlineQueryValidator : AbstractValidator<GetAllKedaiOnlineQuery>
 {
     private int[] allowPageSizes = [5,10,15,20];
+    private string[] allowedSortByColumnNames = [nameof(KedaiDto.Nama),
+    nameof(KedaiDto.Description),
+    nameof(KedaiDto.Category)];
+
     public GetAllKedaiOnlineQueryValidator()
     {
         RuleFor(r => r.PageNumber)
@@ -16,5 +21,9 @@ public class GetAllKedaiOnlineQueryValidator : AbstractValidator<GetAllKedaiOnli
             .Must(size => allowPageSizes.Contains(size))
             .WithMessage($"Page size must be one of the following values: {string.Join(", ", allowPageSizes)}.");
 
+        RuleFor(r => r.SortBy)
+         .Must(value => allowedSortByColumnNames.Contains(value))
+         .When(q => q.SortBy != null)
+         .WithMessage($"SortBy is optional, or must be in [{string.Join(", ", allowedSortByColumnNames)}].");
     }
 }
