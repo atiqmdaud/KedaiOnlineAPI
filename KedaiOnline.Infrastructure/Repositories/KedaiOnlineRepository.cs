@@ -46,9 +46,6 @@ internal class KedaiOnlineRepository(KedaiOnlineDbContext dbContext) : IKedaiOnl
 
         if (sortBy != null)
         {
-            //baseQuery = sortDirection == SortDirection.Ascending
-            //    ? baseQuery.OrderBy(r => EF.Property<object>(r, sortBy))
-            //    : baseQuery.OrderByDescending(r => EF.Property<object>(r, sortBy));
 
             var columnsSelector = new Dictionary<string, Expression<Func<Kedai, object>>>()
             {

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KedaiOnline.Application", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KedaiOnline.Infrastructure", "KedaiOnline.Infrastructure\KedaiOnline.Infrastructure.csproj", "{F2867426-17D1-494E-A1E2-B611FC42AE3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KedaiOnline.Application.Tests", "KedaiOnline.Application.Tests\KedaiOnline.Application.Tests.csproj", "{F01A431C-0AEA-479F-A7D7-D87E8E89A260}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F2867426-17D1-494E-A1E2-B611FC42AE3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2867426-17D1-494E-A1E2-B611FC42AE3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2867426-17D1-494E-A1E2-B611FC42AE3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F01A431C-0AEA-479F-A7D7-D87E8E89A260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F01A431C-0AEA-479F-A7D7-D87E8E89A260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F01A431C-0AEA-479F-A7D7-D87E8E89A260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F01A431C-0AEA-479F-A7D7-D87E8E89A260}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
