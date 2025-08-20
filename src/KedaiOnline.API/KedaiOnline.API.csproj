@@ -17,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    
     <ProjectReference Include="..\KedaiOnline.Application\KedaiOnline.Application.csproj" />
+    
     <ProjectReference Include="..\KedaiOnline.Infrastructure\KedaiOnline.Infrastructure.csproj" />
   </ItemGroup>
 
