@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KedaiOnline.Infrastructure"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KedaiOnline.Application.Tests", "test\KedaiOnline.Application.Tests\KedaiOnline.Application.Tests.csproj", "{47B50381-1539-AF46-CD27-B1AB5481E563}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KedaiOnline.API.Tests", "src\KedaiOnline.API.Tests3\KedaiOnline.API.Tests.csproj", "{50BDCBA7-DD8D-4A35-8F59-0DE9FA8E64E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{47B50381-1539-AF46-CD27-B1AB5481E563}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47B50381-1539-AF46-CD27-B1AB5481E563}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47B50381-1539-AF46-CD27-B1AB5481E563}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50BDCBA7-DD8D-4A35-8F59-0DE9FA8E64E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50BDCBA7-DD8D-4A35-8F59-0DE9FA8E64E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50BDCBA7-DD8D-4A35-8F59-0DE9FA8E64E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50BDCBA7-DD8D-4A35-8F59-0DE9FA8E64E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{F27C7A9F-B45C-AEE6-1D4B-2966F3C129EE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{7B2251B5-0C0B-19AC-F70E-B6CD5F4A8BFC} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{47B50381-1539-AF46-CD27-B1AB5481E563} = {AAEE6094-3272-4997-B998-39A38B0E88E2}
+		{50BDCBA7-DD8D-4A35-8F59-0DE9FA8E64E4} = {AAEE6094-3272-4997-B998-39A38B0E88E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D3338AD5-E708-46AA-A584-5D24AC022FB2}

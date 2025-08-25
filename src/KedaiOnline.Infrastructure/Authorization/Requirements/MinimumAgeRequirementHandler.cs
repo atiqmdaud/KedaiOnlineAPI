@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace KedaiOnline.Infrastructure.Authorization.Requirements;
 
-public class MinimumAgeRequirementHandler(ILogger<MinimumAgeRequirementHandler> logger,
+internal class MinimumAgeRequirementHandler(ILogger<MinimumAgeRequirementHandler> logger,
     IUserContext userContext) : AuthorizationHandler<MinimumAgeRequirement>
 {
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, MinimumAgeRequirement requirement)
