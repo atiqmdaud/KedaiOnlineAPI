@@ -2,6 +2,7 @@
 using KedaiOnline.Domain.Entities;
 using KedaiOnline.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace KedaiOnline.Infrastructure.Seeders;
 
@@ -9,6 +10,11 @@ internal class KedaiSeeder(KedaiOnlineDbContext dbContext) : IKedaiSeeder
 {
     public async Task Seed()
     {
+        if (dbContext.Database.GetPendingMigrations().Any())
+        {
+            await dbContext.Database.MigrateAsync();
+        }
+
         if (await dbContext.Database.CanConnectAsync())
         {
             if (!dbContext.KedaiOnline.Any())
@@ -51,9 +57,15 @@ internal class KedaiSeeder(KedaiOnlineDbContext dbContext) : IKedaiSeeder
 
     private IEnumerable<Kedai> GetKedaiOnline()
     {
-        List<Kedai> KedaiOnline = [
+        User owner = new()
+        {
+            Email = "seed-user@test.com",
+        };
+
+        List <Kedai> KedaiOnline = [
             new()
             {
+                Owner = owner,
                 Nama = "Kedai 1",
                 Description = "Kedai makan yang menyediakan pelbagai jenis makanan tempatan yang sedap.",
                 Category = "Makanan",
@@ -82,6 +94,7 @@ internal class KedaiSeeder(KedaiOnlineDbContext dbContext) : IKedaiSeeder
             },
             new()
             {
+                Owner = owner,
                 Nama = "Kedai 2",
                 Description = "Kedai runcit yang besar",
                 Category = "Runcit",
