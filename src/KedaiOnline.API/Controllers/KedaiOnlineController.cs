@@ -2,6 +2,7 @@
 using KedaiOnline.Application.KedaiOnline.Commands.CreateKedai;
 using KedaiOnline.Application.KedaiOnline.Commands.DeleteKedai;
 using KedaiOnline.Application.KedaiOnline.Commands.UpdateKedai;
+using KedaiOnline.Application.KedaiOnline.Commands.UploadKedaiLogo;
 using KedaiOnline.Application.KedaiOnline.Dtos;
 using KedaiOnline.Application.KedaiOnline.Queries.GetAllKedaiOnline;
 using KedaiOnline.Application.KedaiOnline.Queries.GetKedaiById;
@@ -10,6 +11,7 @@ using KedaiOnline.Infrastructure.Authorization;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing.Constraints;
 
 namespace KedaiOnline.API.Controllers;
 
@@ -29,7 +31,7 @@ public class KedaiOnlineController(IMediator mediator):ControllerBase
 
 
     [HttpGet("{id}")]
-    [Authorize(Policy = PolicyNames.HasNationality)]
+    //[Authorize(Policy = PolicyNames.HasNationality)]
     public async Task<ActionResult<KedaiDto?>> GetById([FromRoute]int id)
     {
         var kedai = await mediator.Send(new GetKedaiByIdQuery(id));
@@ -66,6 +68,24 @@ public class KedaiOnlineController(IMediator mediator):ControllerBase
         command.Id = id;
         await mediator.Send(command);
         return NoContent();
+    }
+
+    [HttpPost("{id}/logo")]
+    public async Task<IActionResult> UploadLogo([FromRoute]int id, IFormFile file)
+    {
+        using var stream = file.OpenReadStream();
+
+        var command = new UploadKedaiLogoCommand()
+        {
+            KedaiId = id,
+            FileName = $"{id}-{file.FileName}",
+            File = stream
+
+        };
+
+        await mediator.Send(command);
+        return NoContent();
+
     }
 
 }

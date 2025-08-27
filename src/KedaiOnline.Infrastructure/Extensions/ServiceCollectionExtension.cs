@@ -4,9 +4,11 @@ using KedaiOnline.Domain.Repositories;
 using KedaiOnline.Infrastructure.Authorization;
 using KedaiOnline.Infrastructure.Authorization.Requirements;
 using KedaiOnline.Infrastructure.Authorization.Services;
+using KedaiOnline.Infrastructure.Configuration;
 using KedaiOnline.Infrastructure.Persistence;
 using KedaiOnline.Infrastructure.Repositories;
 using KedaiOnline.Infrastructure.Seeders;
+using KedaiOnline.Infrastructure.Storage;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -44,5 +46,8 @@ public static class ServiceCollectionExtension
         services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
 
         services.AddScoped<IKedaiAuthorizationService, KedaiAuthorizationService>();
+
+        services.Configure<BlobStorageSettings>(configuration.GetSection("BlobStorage"));
+        services.AddScoped<IBlobStorageService, BlobStorageService>();
     }
 }
