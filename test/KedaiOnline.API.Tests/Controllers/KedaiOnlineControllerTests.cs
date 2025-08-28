@@ -4,6 +4,7 @@ using KedaiOnline.API.Tests;
 using KedaiOnline.Application.KedaiOnline.Dtos;
 using KedaiOnline.Domain.Entities;
 using KedaiOnline.Domain.Repositories;
+using KedaiOnline.Infrastructure.Seeders;
 using Microsoft.AspNetCore.Authorization.Policy;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
@@ -18,6 +19,7 @@ public class KedaiOnlineControllerTests : IClassFixture<WebApplicationFactory<Pr
 {
     private readonly WebApplicationFactory<Program> _factory;
     private readonly Mock<IKedaiOnlineRepository> _kedaiOnlineRepositoryMock = new();
+    private readonly Mock<IKedaiSeeder> _kedaiSeederMock = new();
     public KedaiOnlineControllerTests(WebApplicationFactory<Program> factory)
     {
         _factory = factory.WithWebHostBuilder(builder =>
@@ -28,6 +30,8 @@ public class KedaiOnlineControllerTests : IClassFixture<WebApplicationFactory<Pr
                 services.AddSingleton<IPolicyEvaluator, FakePolicyEvaluator>();
                 services.Replace(ServiceDescriptor.Scoped(typeof(IKedaiOnlineRepository),
                                                  _ => _kedaiOnlineRepositoryMock.Object));
+                services.Replace(ServiceDescriptor.Scoped(typeof(IKedaiSeeder),
+                                                 _ => _kedaiSeederMock.Object));
 
             });
         });
